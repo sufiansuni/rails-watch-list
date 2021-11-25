@@ -1,0 +1,9 @@
+<% banner_url = "https://source.unsplash.com/random" unless defined? banner_url %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= banner_url %>);">
+  <div class="container">
+    <h1><%= banner_header %></h1>
+    <% if defined? banner_paragraph %>
+      <p><%= banner_paragraph %></p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="banner-wrapper">
+<%= render "shared/banner",
+      banner_header: @list.name,
+      banner_url: @list.image_url %>
+<%= link_to "#{@list.bookmarks.count} movies", "#bookmarks-section", class:"btn btn-warning banner-corner-btn" %>
+</div>
+<div class="container my-3">
+  <div>
+    <h2>Bookmark A Movie</h2>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.input :comment %>
+      <%= f.association :movie %>
+      <%= f.button :submit, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+  <hr>
+  <section id="bookmarks-section">
+  <div class="cards my-3">
+    <% @list.bookmarks.each do |bookmark| %>
+      <%= render "lists/bookmark", bookmark: bookmark %>
+    <% end %>
+  </div>
+  </section>
+  <hr>
+</div>
