@@ -1,9 +1,14 @@
-<div class="banner-wrapper">
-<%= render "shared/banner",
-      banner_header: @list.name,
-      banner_url: @list.image_url %>
-<%= link_to "#{@list.bookmarks.count} movies", "#bookmarks-section", class:"btn btn-warning banner-corner-btn" %>
-</div>
+<% if @list.image.attached? %>
+  <div class="banner-wrapper">
+  <%= render "shared/banner",
+        banner_header: @list.name,
+        banner_url: (cl_image_path @list.image.key) %>
+  <%= link_to "#{@list.bookmarks.count} movies", "#bookmarks-section", class:"btn btn-warning banner-corner-btn" %>
+  </div>
+<% else %>
+  <h1 class="text-center my-3"><%= @list.name %></h1>
+<% end %>
+
 <div class="container my-3">
   <div>
     <h2>Bookmark A Movie</h2>

@@ -1,5 +1,11 @@
+<% if list.image.attached? %>
+  <% image_url = cl_image_path list.image.key %>
+<% else %>
+  <% image_url = "https://res.cloudinary.com/sagacity/image/upload/c_crop,h_3840,w_5760,x_0,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_1200/Movie_theater_ogjexy.jpg" %>
+<% end %>
+
 <%= link_to list_path(list) do %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.image_url %>)">
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_url %>')">
     <%= list.name %>
 </div>
 <% end %>
